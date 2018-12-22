@@ -1,0 +1,63 @@
+.album-wrapper {
+    display: flex;
+}
+.album-meta {
+    flex: 1;
+    padding-right: 20px;
+}
+.album-card {
+    width: 250px;
+}
+.card-image {
+    margin-bottom: -1%;
+}
+.album-action-buttons > button {
+    width: 100%;
+}
+.album-tracks {
+    flex: 10;
+    height: 100%;
+    overflow-y: auto;
+}
+.mat-table {
+    width: 100%;
+}
+.album-image {
+    height: 400px;
+    width: 300px
+}
+.text-header {
+    font-size: 25px;
+    font-weight: 100;
+    color: #FFF
+}
+.track-actions-wrapper {
+    padding: 5px;
+}
+.track-action-button-wrapper {
+    padding: 10px;
+}
+.track-action-button {
+    min-width: 80px;
+}
+.mat-header-cell {
+    text-align: center;
+}
+.mat-cell {
+    align-content: center;
+}
+.audio-player-wrapper {
+    position: absolute;
+    top: 1%;
+    right: 15%;
+}
+.tracks-table {
+    background-color: #424242;
+    margin-bottom: 20px;
+    td {
+        color: #FFF
+    }
+}
+.mat-icon {
+    cursor: pointer;
+}

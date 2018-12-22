@@ -1,0 +1,57 @@
+<div class="content">
+  <div class="album-wrapper" *ngIf="album">
+    <div class="album-meta">
+      <mat-card class="album-card">
+        <img mat-card-image class="card-image" src="{{album.image}}" alt="{{album.title}}">
+        <mat-card-actions>
+          <div class="album-action-buttons">
+            <button *ngIf="!album.id" [disabled]="!album?.tracks" (click)="onAddToLibrary()" color="warn" mat-raised-button>Add to Library</button>
+            <button *ngIf="album.id" (click)="onDeleteFromLibrary()" color="warn" mat-raised-button>Delete from Library</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="album-tracks" *ngIf="album?.tracks">
+      <div class="album-actions">
+          <button (click)="onDownloadSelectedTracks()" mat-icon-button color="primary">
+            <mat-icon aria-label="Download">cloud_download</mat-icon>
+          </button>
+      </div>
+      <table mat-table [dataSource]="album?.tracks" class="tracks-table mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-checkbox [(ngModel)]="element.download">{{element.title}}</mat-checkbox>
+          </td>
+        </ng-container>
+      
+        <!-- Actions Column -->
+        <ng-container matColumnDef="url">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="track-actions-wrapper">
+              <span class="track-action-button-wrapper" *ngIf="!isPlaying(element)">
+                <mat-icon (click)="play(element)">play_arrow</mat-icon>
+                <!-- <button class="track-action-button" (click)="play(element)" mat-raised-button color="primary">{{ isPlaying(element)? 'Playing': 'Play'}}</button> -->
+              </span>
+              <span class="track-action-button-wrapper" *ngIf="isPlaying(element)">
+                <!-- <button class="track-action-button" (click)="stop()" mat-raised-button color="warn">Stop</button> -->
+                <mat-icon (click)="stop()">stop</mat-icon>
+              </span>
+            </div>
+          </td>
+        </ng-container>
+      
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedTrackColumns"></tr> -->
+        <tr mat-row *matRowDef="let row; columns: displayedTrackColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <span class="audio-player-wrapper" [hidden]="!playing">
+    <audio id="audio-player" controls></audio>
+  </span>
+</div>

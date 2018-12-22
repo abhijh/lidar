@@ -1,0 +1,20 @@
+<div class="content">
+  <form class="form">
+    <mat-form-field class="search-text">
+      <input autoFocus [(ngModel)]="searchPayload.q" matInput placeholder="Search" name="q">
+    </mat-form-field>
+    
+    <mat-form-field class="search-type">
+      <mat-select placeholder="Type" [(ngModel)]="searchPayload.search_type" name="search_type">
+        <mat-option *ngFor="let search_type of SEARCH_TYPES" [value]="search_type.value">
+          {{search_type.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button	color="primary" class="search-button" (click)="onSearch()">Search</button>
+  </form>
+  <div class="album-list">
+    <album-list [albums]="albums"></album-list>
+  </div>
+</div>

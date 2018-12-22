@@ -1,0 +1,12 @@
+<mat-grid-list gutterSize="10" cols="5" rowHeight="3:8">
+  <mat-grid-tile *ngFor="let album of albums">
+    <mat-card (click)="navigate(album)" class="album-card">
+      <img class="card-image" mat-card-image src="{{album.image}}" alt="{{album.title}}">
+      <mat-card-actions>
+        <div class="album-list-item-action-buttons">
+          <button color="primary" mat-raised-button>{{ album.title }}</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
